@@ -9,6 +9,8 @@ import com.example.demo.models.StudentRegister;
 import com.example.demo.services.StudentService;
 import com.example.demo.utils.ApiResponse;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -29,7 +31,8 @@ public class PublicControllers {
 
     // Post mapping for student registration
     @PostMapping("/register/student")
-    public ApiResponse registerStudent(@RequestBody StudentRegister object) {
+    public ApiResponse registerStudent(@Valid @RequestBody StudentRegister object) {
+        // server-side validation is done via spring boot
         return studentService.register(object);
     }
     

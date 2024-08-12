@@ -1,0 +1,15 @@
+**********    routes for TEST: **********
+GET
+
+public: /public
+admin: /auth/admin
+student: /auth/student
+faculty: /auth/faculty
+
+
+**********    routes for REGISTER: **********
+
+POST
+
+student: /public/register/student
+faculty: /public/register/faculty
