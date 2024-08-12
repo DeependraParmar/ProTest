@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentRegister {
+    @Valid
 
     @NotNull(message = "Name can't be Null")
     @NotEmpty(message = "Name can't be empty")
@@ -24,8 +26,7 @@ public class StudentRegister {
     private String enrollNumber;
 
     @NotNull(message = "Semester can't be Null")
-    @NotEmpty(message = "Semester can't be empty")
-    private int semester;
+    private Integer semester;
 
     @NotNull(message = "Email can't be Null")
     @NotEmpty(message = "Email can't be empty")

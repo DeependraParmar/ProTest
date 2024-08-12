@@ -20,7 +20,7 @@ public class Student extends User {
     private String branch;
 
     @Column(name = "semester", nullable = false)
-    private int semester;
+    private Integer semester;
 
     public Student(StudentRegister object) {
         this.enrollNumber = object.getEnrollNumber();

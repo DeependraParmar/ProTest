@@ -32,7 +32,6 @@ public class PublicControllers {
     // Post mapping for student registration
     @PostMapping("/register/student")
     public ApiResponse registerStudent(@Valid @RequestBody StudentRegister object) {
-        // server-side validation is done via spring boot
         return studentService.register(object);
     }
     
