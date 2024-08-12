@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.example.demo.models.StudentRegister;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -18,5 +20,15 @@ public class Student extends User {
     private String branch;
 
     @Column(name = "semester", nullable = false)
-    private String semester;
+    private int semester;
+
+    public Student(StudentRegister object) {
+        this.enrollNumber = object.getEnrollNumber();
+        this.branch = object.getBranch();
+        this.semester = object.getSemester();
+        this.setName(object.getName());
+        this.setEmail(object.getEmail());
+        this.setPassword(object.getPassword());
+        this.setRole("student");
+    }
 }
