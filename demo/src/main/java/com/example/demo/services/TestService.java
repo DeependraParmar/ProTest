@@ -44,9 +44,9 @@ public class TestService {
             }
             else{
                 Questions question = new Questions(object);
-                question.setTest(test_id);
+                question.setTest(searchedTest.get());
                 questionRepo.save(question);
-                return new ApiResponse(true, null, "Question Added Successfully", null);
+                return new ApiResponse(true, null, "Question added successfully!", null);
             }            
         } catch (Exception e) {
             return new ApiResponse(false, null, "Error adding question!", e.getMessage());
