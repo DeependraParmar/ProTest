@@ -1,7 +1,5 @@
 package com.example.demo.services;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +17,14 @@ public class StudentService {
     @Autowired
     private StudentRepo studentRepo;
     
-    private final ObjectValidator validator;
+    private final ObjectValidator<StudentRegister> validator;
 
     public ApiResponse register(StudentRegister object) {
         try {
-            Set<String> violations = validator.validate(object);
+            var violations = validator.validate(object);
 
             if(!violations.isEmpty()){
-                System.out.println("Validations not empty");
                 String violationString = String.join(" | ", violations);
-                System.out.println("About to return ApiResponse");
                 return new ApiResponse(false, violationString, "Validation Failed!", null);
             }
 

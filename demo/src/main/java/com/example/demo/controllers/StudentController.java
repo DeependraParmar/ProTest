@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth/student")
-public class StudentController {
+public class StudentController extends BaseController {
     @GetMapping("")
     public String hello() {
         return new String("Hello from student controller");

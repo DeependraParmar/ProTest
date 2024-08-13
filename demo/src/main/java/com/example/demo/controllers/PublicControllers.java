@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/public")
-public class PublicControllers {
+public class PublicControllers extends BaseController {
     @Autowired
     private StudentService studentService;
 

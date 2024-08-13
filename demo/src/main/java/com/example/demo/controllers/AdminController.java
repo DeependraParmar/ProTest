@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth/admin")
-public class AdminController {
+public class AdminController extends BaseController {
     @GetMapping("")
     public String hello() {
         return new String("Hello from admin controller");
