@@ -2,12 +2,15 @@ package com.example.demo.entities;
 
 import java.time.LocalDate;
 
+import com.example.demo.models.TestModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,4 +37,12 @@ public class Test {
 
     @Column(name = "status", nullable = false)
     private Boolean status;
+
+
+    public Test(@Valid TestModel object) {
+        this.title = object.getTitle();
+        this.testDate = object.getDate();
+        this.postDate = LocalDate.now();
+        this.status = true;
+    }
 }
