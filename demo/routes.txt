@@ -13,3 +13,8 @@ POST
 
 student: /public/register/student
 faculty: /public/register/faculty
+
+
+
+
+**********    routes for TEST: **********

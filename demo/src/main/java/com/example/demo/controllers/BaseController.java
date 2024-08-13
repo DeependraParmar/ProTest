@@ -21,6 +21,6 @@ public class BaseController {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return new ApiResponse(false, errors, "Invalid Data !", null);
+        return new ApiResponse(false, errors, "Invalid Data!", null);
     }
 }

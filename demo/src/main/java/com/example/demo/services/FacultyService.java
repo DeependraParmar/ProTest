@@ -17,16 +17,16 @@ public class FacultyService {
     @Autowired
     private FacultyRepo facultyRepo;
 
-    // private ObjectValidator<FacultyRegister> validator;
+    private ObjectValidator<FacultyRegister> validator;
 
     public ApiResponse register(FacultyRegister object){
         try {
-            // var violations = validator.validate(object);
+            var violations = validator.validate(object);
 
-            // if(!violations.isEmpty()){
-            //     String violationString = String.join(" | ", violations);
-            //     return new ApiResponse(false, violationString, "Validation Failed!", null);
-            // }
+            if(!violations.isEmpty()){
+                String violationString = String.join(" | ", violations);
+                return new ApiResponse(false, violationString, "Validation Failed!", null);
+            }
 
             Faculty faculty = new Faculty(object);
             facultyRepo.save(faculty);
