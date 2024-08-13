@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.example.demo.models.QuestionModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +25,9 @@ public class Questions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "question", nullable = false)
+    private String question;
+
     @Column(name = "option1", nullable = false)
     private String option1;
 
@@ -36,9 +41,19 @@ public class Questions {
     private String option4;
 
     @Column(name = "correct_answer", nullable = false)
-    private Integer rightAnswer;
+    private Integer answer;
 
     @ManyToOne
     @JoinColumn(name = "test")
     private Test test;
+
+
+    public Questions(QuestionModel object) {
+        this.question = object.getQuestion();
+        this.option1 = object.getOption1();
+        this.option2 = object.getOption2();
+        this.option3 = object.getOption3();
+        this.option4 = object.getOption4();
+        this.answer = object.getAnswer();
+    }
 }
