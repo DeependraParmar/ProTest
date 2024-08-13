@@ -23,6 +23,9 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "test_title", nullable = false)
+    private String title;
+
     @Column(name = "test_date", nullable = false)
     private LocalDate testDate;
 
