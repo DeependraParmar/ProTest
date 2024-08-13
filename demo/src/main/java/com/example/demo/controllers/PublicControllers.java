@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.models.FacultyRegister;
 import com.example.demo.models.StudentRegister;
+import com.example.demo.services.FacultyService;
 import com.example.demo.services.StudentService;
 import com.example.demo.utils.ApiResponse;
 
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class PublicControllers extends BaseController {
     @Autowired
     private StudentService studentService;
+    
+    @Autowired
+    private FacultyService facultyService;
 
     // Test Mapping for public routes
     @GetMapping("")
@@ -33,6 +38,12 @@ public class PublicControllers extends BaseController {
     @PostMapping("/register/student")
     public ApiResponse registerStudent(@Valid @RequestBody StudentRegister object) {
         return studentService.register(object);
+    }
+
+    // Post mapping for faculty registration
+    @PostMapping("/register/faculty")
+    public ApiResponse registerFaculty(@Valid @RequestBody FacultyRegister object){
+        return facultyService.register(object);
     }
     
 }

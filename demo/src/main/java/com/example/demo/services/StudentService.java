@@ -24,7 +24,7 @@ public class StudentService {
             var violations = validator.validate(object);
 
             if(!violations.isEmpty()){
-                String violationString = String.join(" | ", violations);
+                String violationString = String.join("\n", violations);
                 return new ApiResponse(false, violationString, "Validation Failed!", null);
             }
 
