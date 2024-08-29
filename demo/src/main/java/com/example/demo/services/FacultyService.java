@@ -17,14 +17,14 @@ public class FacultyService {
     @Autowired
     private FacultyRepo facultyRepo;
 
-    private ObjectValidator<FacultyRegister> validator;
+    private final ObjectValidator<FacultyRegister> validator;
 
     public ApiResponse register(FacultyRegister object){
         try {
             var violations = validator.validate(object);
 
-            if(!violations.isEmpty()){
-                String violationString = String.join(" | ", violations);
+            if (!violations.isEmpty()) {
+                String violationString = String.join("\n", violations);
                 return new ApiResponse(false, violationString, "Validation Failed!", null);
             }
 
