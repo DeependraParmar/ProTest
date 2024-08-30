@@ -37,4 +37,13 @@ public class UserService implements UserDetailsService {
         else
             return null;
     }
+
+    public User getById(int userid){
+        Optional<User> op = userRepo.findById(userid);
+
+        if(op.isPresent())
+            return op.get();
+        else
+            return null;
+    }
 }
