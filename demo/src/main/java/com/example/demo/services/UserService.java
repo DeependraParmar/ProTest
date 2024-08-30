@@ -3,6 +3,9 @@ package com.example.demo.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.User;
@@ -12,7 +15,7 @@ import com.example.demo.repositories.UserRepo;
 import jakarta.validation.Valid;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
@@ -25,4 +28,13 @@ public class UserService {
             return null;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> op = userRepo.findByEmail(username);
+
+        if(op.isPresent())
+            return op.get();
+        else
+            return null;
+    }
 }

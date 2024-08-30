@@ -42,15 +42,15 @@ public class User implements UserDetails {
     
     @Column(name = "role", nullable = false)
     private String role;
-
+        
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);
+        return Arrays.asList(authority);
     }
 
     @Override
-    public String getUsername() {
-        
-        return null;
+    public String getUsername(){
+        return email;
     }
 }
