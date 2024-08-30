@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,9 @@ public class PublicControllers extends BaseController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     // Test Mapping for public routes
     @GetMapping("")
     public String hello() {
@@ -44,12 +48,14 @@ public class PublicControllers extends BaseController {
     // Post mapping for student registration
     @PostMapping("/register/student")
     public ApiResponse registerStudent(@Valid @RequestBody StudentRegister object) {
+        object.setPassword(encoder.encode(object.getPassword()));
         return studentService.register(object);
     }
 
     // Post mapping for faculty registration
     @PostMapping("/register/faculty")
     public ApiResponse registerFaculty(@Valid @RequestBody FacultyRegister object){
+        object.setPassword(encoder.encode(object.getPassword()));
         return facultyService.register(object);
     }
     

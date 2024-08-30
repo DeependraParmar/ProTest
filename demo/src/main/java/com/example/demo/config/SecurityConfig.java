@@ -31,16 +31,8 @@ public class SecurityConfig {
     @Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(t -> t.disable())
-				.authorizeHttpRequests((requests) -> requests.requestMatchers("/", "/user/**").permitAll()
-						.requestMatchers("/irecp/**").hasAnyRole("ADMIN","RECP")
-						.requestMatchers("/iadmin/**").hasRole("ADMIN")
-						.requestMatchers("/web/**").hasAnyRole("ADMIN","RECP")
-						.anyRequest().authenticated())
-				.exceptionHandling(t->t.accessDeniedPage("/user/accessDenied"))
-				.formLogin(t->{
-					t.usernameParameter("userPhone");
-					t.passwordParameter("userPassword");
-				}).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+				.authorizeHttpRequests((requests) -> requests.requestMatchers("/", "/acro/**", "/swagger-ui/**").permitAll().anyRequest().authenticated()
+                ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
 	}

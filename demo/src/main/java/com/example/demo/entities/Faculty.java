@@ -25,6 +25,6 @@ public class Faculty extends User {
         this.setName(object.getName());
         this.setEmail(object.getEmail());
         this.setPassword(object.getPassword());
-        this.setRole("faculty");
+        this.setRole("ROLE_FACULTY");
     }
 }

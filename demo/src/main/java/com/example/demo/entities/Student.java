@@ -29,6 +29,6 @@ public class Student extends User {
         this.setName(object.getName());
         this.setEmail(object.getEmail());
         this.setPassword(object.getPassword());
-        this.setRole("student");
+        this.setRole("ROLE_STUDENT");
     }
 }
